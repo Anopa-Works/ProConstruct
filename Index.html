@@ -1,98 +1,1194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pro Construct – Project Management Zimbabwe</title>
-    <link rel="stylesheet" href="styles.css" />
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Construct - Expert Construction Management & Project Oversight</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Color Variables - Simplified & Muted */
+        :root {
+            --pure-white: #FFFFFF;
+            --deep-charcoal: #1C1C1C;
+            --muted-mustard: #B88A00; /* Subtle Gold/Mustard */
+            --light-gray: #F5F5F5;
+            --text-dark: #333333;
+            --text-light: #888888;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+            letter-spacing: -0.02em; /* Modern typographic touch */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: inherit;
+            color: var(--deep-charcoal);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--pure-white);
+            padding: 1.25rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-charcoal);
+            letter-spacing: 0.05em;
+        }
+
+        .logo span {
+            color: var(--muted-mustard);
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--muted-mustard);
+            border-bottom: 2px solid var(--muted-mustard);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--deep-charcoal);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--pure-white);
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--deep-charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--muted-mustard);
+            border-bottom: 4px solid var(--muted-mustard);
+            padding-bottom: 0.1em;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .benefit-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            transition: background 0.3s, border-color 0.3s;
+            text-align: left;
+        }
+
+        .benefit-card:hover {
+            background: var(--pure-white);
+            border-color: var(--muted-mustard);
+        }
+
+        .benefit-card h3 {
+            color: var(--muted-mustard);
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .benefit-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--muted-mustard);
+            color: var(--deep-charcoal);
+            padding: 1rem 3rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.3s;
+            border: 1px solid var(--muted-mustard);
+        }
+
+        .cta-button:hover {
+            background: var(--deep-charcoal);
+            color: var(--pure-white);
+            border-color: var(--deep-charcoal);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header .gold-line {
+            display: none; /* Removing heavy lines for minimalist look */
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--muted-mustard);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--muted-mustard);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* How It Works (Process Timeline) */
+        .process-timeline {
+            position: relative;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Vertical line for the timeline (subtle) */
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 39px;
+            width: 2px;
+            height: 100%;
+            background: var(--light-gray);
+            z-index: 0;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 100px; /* Space for number + icon */
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--muted-mustard);
+            color: var(--deep-charcoal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--pure-white);
+            z-index: 1;
+        }
+        
+        .step-content {
+            flex: 1;
+            padding: 1rem 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Projects Gallery */
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--pure-white);
+            border: 1px solid var(--text-light);
+            color: var(--text-dark);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--muted-mustard);
+            color: var(--deep-charcoal);
+            border-color: var(--muted-mustard);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--pure-white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--light-gray);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 4rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-text p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .values-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .value-icon {
+            font-size: 1.5rem;
+            color: var(--muted-mustard);
+            min-width: 30px;
+        }
+
+        .value-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .value-item p {
+            display: none; /* Hiding description for ultra-minimalist bullet points */
+        }
+
+        .about-visual {
+            background: var(--deep-charcoal);
+            padding: 2.5rem;
+            border-radius: 8px;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--muted-mustard);
+        }
+
+        .stat-box h4 {
+            font-size: 2.5rem;
+            color: var(--muted-mustard);
+            margin-bottom: 0.3rem;
+            font-weight: 800;
+        }
+
+        .stat-box p {
+            color: var(--pure-white);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--pure-white);
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .faq-question:hover {
+            background: var(--light-gray);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--muted-mustard);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+            font-size: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            opacity: 0.85;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--text-light);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--muted-mustard);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: var(--deep-charcoal);
+            color: var(--pure-white);
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--muted-mustard);
+            color: var(--deep-charcoal);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-charcoal);
+            color: var(--pure-white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section h3 {
+            color: var(--muted-mustard);
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--muted-mustard);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                border-top: 1px solid var(--light-gray);
+                padding: 1rem 0;
+            }
+            .nav-links a {
+                 color: var(--deep-charcoal);
+                 padding: 0.75rem 5%;
+                 width: 100%;
+            }
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .contact-container {
+                padding: 2rem;
+            }
+
+            .process-timeline::before {
+                left: 1rem; /* Adjust timeline position */
+            }
+            
+            .process-step {
+                padding-left: 3rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                left: 0;
+                top: 5px;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+    </head>
 <body>
-
-<nav class="nav">
-    <div class="nav-container">
-        <div class="logo">Pro <span>Construct</span></div>
-
-        <ul class="nav-links">
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="sectors.html">Sectors</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="insights.html">Insights</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <div class="mobile-menu">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-</nav>
-
-<header class="hero">
-    <div class="container hero-content">
-        <div class="hero-text">
-            <span class="hero-tag">Project Management for Zimbabwe & SADC</span>
-            <h1>Delivering predictable, controlled, high-value project outcomes.</h1>
-            <p>We manage complex capital projects with strict cost, time, and quality controls.</p>
-            <a href="contact.html" class="cta">Talk to a Project Expert</a>
-        </div>
-
-        <div class="hero-visual">🇿🇼</div>
-    </div>
-</header>
-
-<section class="services">
-    <div class="container">
-        <h2>Core Services</h2>
-        <div class="service-grid">
-            <div class="service-item">
-                <h3>Owner’s Representative</h3>
-                <p>We serve as your independent project authority.</p>
-            </div>
-            <div class="service-item">
-                <h3>Procurement & Forex Advisory</h3>
-                <p>Minimize exposure and secure competitive contracts.</p>
-            </div>
-            <div class="service-item">
-                <h3>Regulatory Navigation</h3>
-                <p>Approvals, permits, parastatal coordination.</p>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Pro<span>Construct</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">Process</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<section class="cta-section">
-    <div class="container">
-        <h2>Start Your Project with Certainty</h2>
-        <a href="contact.html" class="cta">Request a Meeting</a>
-    </div>
-</section>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your construction project, <span class="highlight">expertly managed</span>.</h1>
+            <p>We provide objective project oversight. We manage every detail, decision, and dollar to ensure quality and budget adherence.</p>
+            <a href="#contact" class="cta-button">Start a Conversation</a>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Reduced Risk</h3>
+                    <p>Expert oversight prevents errors that drain your budget and timeline.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Budget Integrity</h3>
+                    <p>Rigorous financial control and transparent reporting keep costs in check.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Quality Assurance</h3>
+                    <p>We vet, coordinate, and supervise every trade partner on your behalf.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <div class="container footer-columns">
-        <div>
-            <div class="footer-logo">Pro <span>Construct</span></div>
-            <p>Project management excellence for Zimbabwe & SADC.</p>
+    <section id="services">
+        <div class="section-header">
+            <h2>Core Services</h2>
+            <div class="gold-line"></div>
+            <p>Streamlined construction management solutions for projects of any scale.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Project Control</h3>
+                <p>End-to-end oversight ensuring every phase meets quality standards and timeline expectations.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Strategic Planning</h3>
+                <p>Strategic planning, coordination, and execution management from concept to completion.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Procurement & Vetting</h3>
+                <p>We source, vet, and recommend trusted contractors who match your requirements.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Cost Management</h3>
+                <p>Detailed financial tracking to prevent cost overruns and unexpected financial delays.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👷</div>
+                <h3>Site Monitoring</h3>
+                <p>Regular on-site inspections and progress monitoring to ensure work quality and adherence to plans.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">✅</div>
+                <h3>Quality Sign-Off</h3>
+                <p>Rigorous quality control measures and final inspections to protect your long-term investment.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Transparent Reporting</h3>
+                <p>Clear, transparent updates on progress, budget status, and upcoming milestones.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Commercial Oversight</h3>
+                <p>Expert coordination of commercial builds and fit-outs, managing complex stakeholder requirements.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Renovation Expertise</h3>
+                <p>Specialized management for renovations, navigating the unique challenges of existing structures.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" style="background: var(--pure-white);">
+        <div class="section-header">
+            <h2>Our Process</h2>
+            <div class="gold-line"></div>
+            <p>A structured, five-step approach to project delivery.</p>
+        </div>
+        
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Discovery & Scope</h3>
+                    <p>We define your vision, budget parameters, and timeline. Establishing clear expectations is the first and most critical step.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Pre-Construction Planning</h3>
+                    <p>Detailed budgeting, risk mitigation, and scheduling. We map out every decision point before ground is broken.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Partner Selection</h3>
+                    <p>We leverage our network to source, vet, and contract reliable trade partners and suppliers on your behalf.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Execution & Oversight</h3>
+                    <p>Daily coordination, site supervision, quality control, and cost management. We ensure compliance with the plan.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Closeout & Handover</h3>
+                    <p>Final inspections, punch list completion, and comprehensive documentation for a seamless transition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--light-gray);">
+        <div class="section-header">
+            <h2>Featured Work</h2>
+            <div class="gold-line"></div>
+            <p>A selection of projects where our oversight led to exceptional results.</p>
+        </div>
+        
+        <div class="projects-filter">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Residential</button>
+            <button class="filter-btn">Commercial</button>
+            <button class="filter-btn">Renovation</button>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🏘️</div>
+                <div class="project-info">
+                    <span class="project-category">Residential</span>
+                    <h3>Custom Home Build (4,500 sq ft)</h3>
+                    <p>Delivered 2 weeks ahead of schedule and under budget through strict process control.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🏢</div>
+                <div class="project-info">
+                    <span class="project-category">Commercial</span>
+                    <h3>Tech Office Fit-Out (15,000 sq ft)</h3>
+                    <p>Managed complex systems integration and coordinated 12 subcontractors without operational disruption.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🏠</div>
+                <div class="project-info">
+                    <span class="project-category">Renovation</span>
+                    <h3>Historic Landmark Restoration</h3>
+                    <p>Navigated complex permits and specialized trades to maintain historical integrity.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🏗️</div>
+                <div class="project-info">
+                    <span class="project-category">Commercial</span>
+                    <h3>Multi-Unit Retail Development</h3>
+                    <p>Orchestrated phased construction to allow staged openings while maintaining efficiency.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🏡</div>
+                <div class="project-info">
+                    <span class="project-category">Residential</span>
+                    <h3>Luxury Estate (8,000 sq ft)</h3>
+                    <p>Full project management for high-end estate, coordinating luxury finishes with precision timing.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">🔨</div>
+                <div class="project-info">
+                    <span class="project-category">Renovation</span>
+                    <h3>Condo Interior Update</h3>
+                    <p>Fast-track, high-quality interior renovation project minimizing disruption to adjacent residents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <h2>Our Foundation</h2>
+            <div class="gold-line"></div>
+            <p>An expert advocate dedicated to realizing your vision with integrity and control.</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>The Owner's Representative</h3>
+                <p>ProConstruct was founded by experienced builders who recognized a critical gap: property owners needed an expert advocate on their side. We are not the contractor; we are **your** construction specialists, ensuring your vision is realized efficiently, on budget, and to the highest quality standard.</p>
+                <p>Our commitment is simple: to remove the stress and complexity from your construction journey, providing you with clarity, control, and peace of mind from conception to key handover.</p>
+                
+                <div class="values-list">
+                    <div class="value-item">
+                        <div class="value-icon">⭐</div>
+                        <div><h4>Quality Driven</h4></div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⚖️</div>
+                        <div><h4>Total Transparency</h4></div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⏱️</div>
+                        <div><h4>Schedule Efficiency</h4></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-visual">
+                <div class="stat-box">
+                    <h4>15+</h4>
+                    <p>Years of Combined Experience</p>
+                </div>
+                <div class="stat-box">
+                    <h4>98%</h4>
+                    <p>Projects On-Time or Early</p>
+                </div>
+                <div class="stat-box">
+                    <h4>$100M+</h4>
+                    <p>Total Project Value Managed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" style="background: var(--light-gray);">
+        <div class="section-header">
+            <h2>Common Questions</h2>
+            <div class="gold-line"></div>
+            <p>Clarity on our role in your project.</p>
         </div>
 
-        <div>
-            <h4>Company</h4>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Our Role vs. General Contractor? <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    A General Contractor (GC) is responsible for the physical construction. ProConstruct is your Owner's Representative/Construction Manager, sitting on *your* side. We oversee the GC (or multiple subcontractors) to ensure they meet quality, budget, and schedule requirements, providing an impartial layer of control.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Will a CM increase project cost? <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Our service is designed to **save** you money overall. By preventing costly change orders, catching contractor overcharges, ensuring optimal procurement, and keeping the schedule tight, we often generate savings that exceed our management fee.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    When should ProConstruct be engaged? <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    The earlier, the better! Ideally, we are engaged during the design and planning phase, even before you select an architect. This allows us to perform crucial pre-construction services like budgeting and constructability reviews.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get Started</h2>
+            <div class="gold-line"></div>
+            <p>Schedule a free consultation to discuss your project needs.</p>
         </div>
 
-        <div>
-            <h4>Explore</h4>
-            <a href="projects.html">Projects</a>
-            <a href="insights.html">Insights</a>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>We are ready to lend our expertise to ensure your next build is a seamless success. Reach out to us directly or fill out the inquiry form.</p>
+
+                <div style="margin-bottom: 2rem; font-size: 0.95rem;">
+                    <p style="margin-bottom: 0.5rem;"><strong>Office:</strong> (555) 123-4567</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> info@proconstruct.com</p>
+                    <p><strong>Address:</strong> 101 Construction Lane, Project City, PC 12345</p>
+                </div>
+                
+                <a href="https://wa.me/15551234567" target="_blank" class="whatsapp-btn">
+                    📞 Message us on WhatsApp
+                </a>
+            </div>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-type">Project Type</label>
+                    <select id="project-type" name="project-type" required>
+                        <option value="">-- Select Project Type --</option>
+                        <option value="Residential New Build">Residential New Build</option>
+                        <option value="Commercial New Build">Commercial New Build</option>
+                        <option value="Major Renovation">Major Renovation</option>
+                        <option value="Small Project Oversight">Small Project Oversight</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Project Description</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Request Consultation</button>
+            </form>
         </div>
-    </div>
+    </section>
 
-    <div class="footer-bottom">
-        © <span id="year"></span> Pro Construct
-    </div>
-</footer>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ProConstruct</h3>
+                <p>Expert, objective construction management. We manage. You relax.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#">Facebook</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Work</a>
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Expertise</h3>
+                <a href="#">Project Planning</a>
+                <a href="#">Budget Control</a>
+                <a href="#">Contractor Vetting</a>
+                <a href="#">Site Supervision</a>
+                <a href="#">Quality Assurance</a>
+            </div>
 
-<script src="main.js"></script>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>101 Construction Lane</p>
+                <p>Project City, PC 12345</p>
+                <p>(555) 123-4567</p>
+                <p>info@proconstruct.com</p>
+            </div>
+        </div>
 
+        <div class="footer-bottom">
+            &copy; <span id="current-year"></span> ProConstruct. All rights reserved. | <a href="#" style="display: inline; color: rgba(255, 255, 255, 0.5);">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year for the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            const toggle = item.querySelector('.faq-toggle');
+
+            // Initially hide the answer for CSS-based minimal display
+            answer.style.display = 'none';
+            toggle.textContent = '+'; // Ensure initial state is plus
+
+            question.addEventListener('click', () => {
+                const isOpen = answer.style.display === 'block';
+
+                // Close all other open answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.style.display = 'none';
+                        ans.closest('.faq-item').querySelector('.faq-toggle').textContent = '+';
+                    }
+                });
+
+                // Toggle the clicked answer
+                answer.style.display = isOpen ? 'none' : 'block';
+                toggle.textContent = isOpen ? '+' : '−';
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            const isVisible = navLinks.style.display === 'flex';
+
+            if (window.innerWidth <= 768) {
+                if (isVisible) {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+             link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.nav-links').style.display = 'none';
+                }
+             });
+        });
+    </script>
 </body>
 </html>
